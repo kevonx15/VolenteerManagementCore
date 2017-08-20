@@ -25,7 +25,6 @@ namespace VolenteerManagementCore
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration["Data:VolenteerManagement:ConnectionStrings"]));
-            services.AddTransient<IVolenteerRepository, EFVolenteerRepository>();
             services.AddMvc();
         }
 
@@ -39,7 +38,7 @@ namespace VolenteerManagementCore
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Volenteer}/{action=List}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
             SeedData.EnsurePopulated(app);
         }
